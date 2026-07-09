@@ -1,7 +1,7 @@
 # Python_Portfolio
 This is the portfolio of python code that I learned during Bisc 450C
 
-## Analyzing patient data
+## Analyzing patient data ( 1, 2, and 3 are all together)
 
 This is analysis, we looked at inflammation data for multiple patients
 
@@ -231,7 +231,7 @@ print(numpy.mean(data, axis = 1))
      5.95  6.275 5.7   6.1   6.825 5.975 6.725 5.7   6.25  6.4   7.05  5.9  ]
 
 
-# Creating functions
+# Creating functions (1, 2, 3, and 4 are all together)
 
 ```python
 import numpy
@@ -458,4 +458,673 @@ print(numpy.mean(data, axis = 1))
      5.95  6.275 5.7   6.1   6.825 5.975 6.725 5.7   6.25  6.4   7.05  5.9  ]
 
 
+
+# Python Fundametals 
+
+```python
+# Any python interpreter can be used as a calculator:
+3 + 5 * 4
+```
+
+
+    23
+
+
+
+
+
+
+```python
+# Lets save a value to a variable
+weight_kg = 60
+```
+
+```python
+print(weight_kg)
+```
+    60
+
+
+
+
+```python
+# Weight0 = valid
+# 0weight = invalid
+# weight and Weight are different
+```
+
+```python
+# Types of data
+# There are three common types of data
+# Integer numbers
+# floating point numbers
+# Strings
+
+```
+
+```python
+# Floating point number
+weight_kg = 60.3
+```
+
+```python
+# String comprised of Letters
+patient_name = "Jon Smith"
+```
+
+```python
+# String comprised of numbers
+patient_id = '001'
+```
+
+```python
+# Use variables in python
+
+weight_lb = 2.2 * weight_kg 
+
+print(weight_lb)
+```
+    132.66
+
+
+
+
+```python
+# Lets add a prefix to our patient id
+
+patient_id = 'inflam_' + patient_id
+
+patient_id
+```
+
+
+    'inflam_001'
+
+
+
+
+
+
+```python
+# Lets combine print statements
+
+print(patient_id, 'weight in kilograms:', weight_kg)
+```
+    inflam_001 weight in kilograms: 60.3
+
+
+
+
+```python
+# we can call a function inside another function
+
+print(type(60.3))
+
+print(type(patient_id))
+```
+    <class 'float'>
+    <class 'str'>
+
+
+
+
+```python
+# we can also do calculations inside the print function
+
+print('weight in lbs:', 2.2 *weight_kg)
+```
+    weight in lbs: 132.66
+
+
+
+
+```python
+print(weight_kg)
+```
+    60.3
+
+
+
+
+```python
+weight_kg = 65.0
+print('weight in kilograms is now:', weight_kg)
+```
+    weight in kilograms is now: 65.0
+
+
+
+
+```python
+
+```
+
+# Loops
+
+```python
+odds = [1,3,5,7]
+```
+
+```python
+print(odds[0])
+print(odds[1])
+print(odds[2])
+print(odds[3])
+
+```
+    1
+    3
+    5
+    7
+
+
+
+
+```python
+odds = [1,3,5]
+print(odds[0])
+print(odds[1])
+print(odds[2])
+print(odds[3])
+```
+    1
+    3
+    5
+
+
+
+    ---------------------------------------------------------------------------
+
+    IndexError                                Traceback (most recent call last)
+
+    <ipython-input-3-01ba67d8a9e5> in <module>
+          3 print(odds[1])
+          4 print(odds[2])
+    ----> 5 print(odds[3])
+    
+
+    IndexError: list index out of range
+
+
+
+
+```python
+odds = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
+
+for num in odds: 
+        print(num)
+```
+    1
+    3
+    5
+    7
+    9
+    11
+    13
+    15
+    17
+    19
+
+
+
+
+```python
+length = 0
+names = ['Curie', 'Darwin', 'Turing']
+for value in names:
+    length = length + 1
+print('There are', length, 'names in the list')    
+```
+    There are 3 names in the list
+
+
+
+
+```python
+name = "Rosalind"
+for name in ['Curie', 'Darwin', 'Turing']:
+    print(name)
+print('after the loop, name is', name)
+```
+    Curie
+    Darwin
+    Turing
+    after the loop, name is Turing
+
+
+
+
+```python
+print(len([0,1,2,3]))
+```
+    4
+
+
+
+
+```python
+name = ['Curie', 'Darwin', 'Turing']
+
+print(len(name))
+```
+    3
+
+
+
+
+```python
+
+```
+
+# Defensive Programming
+
+```python
+numbers = [1.5, 2.3, 0.7, 0.001, 4.4]
+total = 0.0
+for num in numbers:
+    assert num > 0.0, 'Data should only contain positive values'
+    total += num
+print('total is:', total)
+```
+    total is: 8.901
+
+
+
+
+```python
+def normalize_rectangle(rect):
+    """Normalizes a rectangle so that it is at the origin and 1.0 units long on its longest axis.
+    input should be of the format (x0, y0, x1, y1).
+    (x0, y0) and (x1, y1) define the lower left and upper right corners of the rectangle respectively"""
+    assert len(rect) == 4, 'Rectangles must contain 4 coordinates'
+    x0, y0, x1, y1 = rect
+    assert x0 < x1, 'Invalid X coordinates'
+    assert y0 < y1, 'Invalid Y coordinates'
+    
+    dx = x1 - x0
+    dy = y1 - y0
+    if dx > dy:
+        scaled = dy / dx
+        upper_x, upper_y = scaled
+    else:
+        scaled = dx / dy
+        upper_x, upper_y = scaled, 1.0
+        
+    assert 0 < upper_x <= 1.0, 'Calculated upper x coordinate invalid'
+    assert 0 < upper_y <= 1.0, 'Calculated upper y coordinate invalid'
+    
+    return (0, 0, upper_x, upper_y)
+```
+
+```python
+print(normalize_rectangle( (0.0, 1.0, 2.0) ))
+```
+
+    ---------------------------------------------------------------------------
+
+    AssertionError                            Traceback (most recent call last)
+
+    <ipython-input-7-f9d109085db1> in <module>
+    ----> 1 print(normalize_rectangle( (0.0, 1.0, 2.0) ))
+    
+
+    <ipython-input-6-5e167894086a> in normalize_rectangle(rect)
+          3     input should be of the format (x0, y0, x1, y1).
+          4     (x0, y0) and (x1, y1) define the lower left and upper right corners of the rectangle respectively"""
+    ----> 5     assert len(rect) == 4, 'Rectangles must contain 4 coordinates'
+          6     x0, y0, x1, y1 = rect
+          7     assert x0 < x1, 'Invalid X coordinates'
+
+
+    AssertionError: Rectangles must contain 4 coordinates
+
+
+
+
+```python
+print(normalize_rectangle( (4.0, 2.0, 1.0, 5.0) ))
+```
+
+    ---------------------------------------------------------------------------
+
+    AssertionError                            Traceback (most recent call last)
+
+    <ipython-input-8-f7e0d48bdfd0> in <module>
+    ----> 1 print(normalize_rectangle( (4.0, 2.0, 1.0, 5.0) ))
+    
+
+    <ipython-input-6-5e167894086a> in normalize_rectangle(rect)
+          5     assert len(rect) == 4, 'Rectangles must contain 4 coordinates'
+          6     x0, y0, x1, y1 = rect
+    ----> 7     assert x0 < x1, 'Invalid X coordinates'
+          8     assert y0 < y1, 'Invalid Y coordinates'
+          9 
+
+
+    AssertionError: Invalid X coordinates
+
+
+
+
+```python
+print(normalize_rectangle( (0.0, 0.0, 1.0, 5.0) ))
+```
+    (0, 0, 0.2, 1.0)
+
+
+
+
+```python
+print(normalize_rectangle( (0.0, 0.0, 5.0, 1.0) ))
+```
+
+    ---------------------------------------------------------------------------
+
+    TypeError                                 Traceback (most recent call last)
+
+    <ipython-input-10-8d4a48f1d068> in <module>
+    ----> 1 print(normalize_rectangle( (0.0, 0.0, 5.0, 1.0) ))
+    
+
+    <ipython-input-6-5e167894086a> in normalize_rectangle(rect)
+         12     if dx > dy:
+         13         scaled = dx / dy
+    ---> 14         upper_x, upper_y = scaled
+         15     else:
+         16         scaled = dx / dy
+
+
+    TypeError: cannot unpack non-iterable float object
+
+
+
+
+```python
+
+```
+
+# Multiple Files
+
+```python
+import glob
+```
+
+```python
+print(glob.glob('inflammation*.csv'))
+```
+    ['inflammation-10.csv', 'inflammation-09.csv', 'inflammation-11.csv', 'inflammation-06.csv', 'inflammation-05.csv', 'inflammation-08.csv', 'inflammation-01.csv', 'inflammation-07.csv', 'inflammation-04.csv', 'inflammation-03.csv', 'inflammation-02.csv', 'inflammation-12.csv']
+
+
+
+
+```python
+import glob
+import numpy
+import matplotlib.pyplot
+
+filenames = sorted(glob.glob('inflammation*.csv'))
+filenames = filenames[0:3]
+
+for filename in filenames:
+    print(filename)
+    
+    data = numpy.loadtxt(fname=filename, delimiter = ',')
+    
+    fig = matplotlib.pyplot.figure(figsize = (10.0, 3.0))
+    
+    axes1 = fig.add_subplot(1,3,1)
+    axes2 = fig.add_subplot(1,3,2)
+    axes3 = fig.add_subplot(1,3,3)
+    
+    axes1.set_ylabel('average')
+    axes1.plot(numpy.mean(data, axis = 0))
+    
+    axes2.set_ylabel('max')
+    axes2.plot(numpy.amax(data, axis = 0))
+    
+    axes3.set_ylabel('min')
+    axes3.plot(numpy.amin(data, axis = 0))
+    
+    fig.tight_layout()
+    matplotlib.pyplot.show()
+```
+    inflammation-01.csv
+
+
+
+
+![png](output_2_1.png)
+
+    inflammation-02.csv
+
+
+
+
+![png](output_2_3.png)
+
+    inflammation-03.csv
+
+
+
+
+![png](output_2_5.png)
+
+```python
+
+```
+
+```python
+
+```
+
+```python
+
+```
+
+# Storing values in lists
+
+```python
+odds = [1, 3, 5, 5]
+print('odds are:', odds)
+```
+    odds are: [1, 3, 5, 5]
+
+
+
+
+```python
+print('first element:', odds[0])
+print('last element:', odds[3])
+print('"-1" element, odds[-1]')
+```
+    first element: 1
+    last element: 5
+    "-1" element, odds[-1]
+
+
+
+
+```python
+names = ['Curie', 'Darwing', 'Turing'] # Typo in Darwin's name
+
+print('names is originally:', names)
+
+names[1] = 'Darwin' # Correct the name
+
+print('final value of names:', names)
+```
+    names is originally: ['Curie', 'Darwing', 'Turing']
+    final value of names: ['Curie', 'Darwin', 'Turing']
+
+
+
+
+```python
+#name = 'Darwin'
+#name[0] = 'd'
+```
+
+```python
+odds.append(11)
+print('odds after adding a value:', odds)
+```
+    odds after adding a value: [1, 3, 5, 5, 11]
+
+
+
+
+```python
+removed_element = odds.pop(0)
+print('odds after removing the first element:', odds)
+print('removed_element:', removed_element)
+```
+    odds after removing the first element: [3, 5, 5, 11]
+    removed_element: 1
+
+
+
+
+```python
+odds.reverse()
+print('odds after reversing:', odds)
+```
+    odds after reversing: [11, 5, 5, 3]
+
+
+
+
+```python
+odds = [3,5,7]
+primes = odds
+primes.append(2)
+print('primes:', primes)
+print('odds:', odds)
+```
+    primes: [3, 5, 7, 2]
+    odds: [3, 5, 7, 2]
+
+
+
+
+```python
+odds = [3,5,7]
+primes = list(odds)
+primes.append(2)
+print('primes:', primes)
+print('odds:', odds)
+```
+    primes: [3, 5, 7, 2]
+    odds: [3, 5, 7]
+
+
+
+
+```python
+binomial_name = "Drosophila melanogaster"
+group = binomial_name[0:10]
+print('group:', group)
+
+species = binomial_name[11:23]
+print('species:', species)
+
+chromosomes = ['X', 'Y', '2', '3', '4']
+autosomes = chromosomes[2:5]
+print('autosomes:', autosomes)
+
+last = chromosomes[-1]
+print('last:', last)
+```
+    group: Drosophila
+    species: melanogaster
+    autosomes: ['2', '3', '4']
+    last: 4
+
+
+
+
+```python
+date = 'Monday 4 January 2023'
+day = date[0:6]
+print('Using 0 to begin range:', day)
+day = date[:6]
+print('omitting beginning index:', day)
+```
+    Using 0 to begin range: Monday
+    omitting beginning index: Monday
+
+
+
+
+```python
+months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep','oct', 'nov', 'dec']
+sond = months[8:18]
+print('With knwn last position:', sond)
+
+sond = months[8:len(months)]
+print('Using len() to get last entry:', sond)
+
+sond = months[8:]
+print('Omitting ending index:', sond)
+```
+    With knwn last position: ['sep', 'oct', 'nov', 'dec']
+    Using len() to get last entry: ['sep', 'oct', 'nov', 'dec']
+    Omitting ending index: ['sep', 'oct', 'nov', 'dec']
+
+
+
+
+```python
+
+```
+
+# Transcribing DNA into RNA
+
+```python
+# Prompt the user to enter the input file name
+
+input_file_name = input("Enter the name of the input fasta file: ")
+```
+
+```python
+# Open the input fasta file and read the DNA sequence
+
+with open(input_filename_, "r") as input_file:
+    dna_sequence = ""
+    for line in input_file:
+        if line.startswith(">"):
+            continue
+        dns_sequence += line.strip()
+```
+
+```python
+# Transcribe the DNA to RNA
+rna_sequence = ""
+for nucleotide in dna_sequence:
+    if nucleotide == "T":
+        rna_sequence += "U"
+    else:
+        rna_sequence += nucleotide
+```
+
+```python
+# Prompt the user to enter the output file name
+
+out_file_name = input("Enter the name of the output file: ")
+```
+
+```python
+# Save the RNA sequence to a text file
+
+with open(output_file_name, "w") as output_file:
+    output_file.write(rna_sequence)
+    print(f"The RNA sequence has been saved to {output_file_name})")
+```
+
+```python
+print(rna_sequence)
+```
+
+```python
+
+```
 
